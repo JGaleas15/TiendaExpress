@@ -10,13 +10,16 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-public class Main {
+
+public class CalculoDescuento {
     public static double calcularDescuento(double montoTotal, double porcentajeDescuento) {
         return montoTotal * (porcentajeDescuento / 100);
     }
+
     public static double calcularDescuento(double montoTotal) {
         return calcularDescuento(montoTotal, 10);
     }
+
     public static void mostrarMenu() {
         System.out.println("\n====== TIENDA EXPRESS ======");
         System.out.println("1. Agregar producto");
@@ -24,15 +27,17 @@ public class Main {
         System.out.println("4. Salir");
         System.out.print("Seleccione una opcion: ");
     }
+
     public static int leerOpcion(Scanner sc) {
         int opcion = 0;
         try {
             opcion = Integer.parseInt(sc.nextLine());
         } catch (NumberFormatException e) {
-            System.out.println("Debe ingresar un número.");
+            System.out.println("Debe ingresar un numero.");
         }
         return opcion;
     }
+
     public static void agregarProducto(List<Double> carrito, double precio) {
         carrito.add(precio);
         System.out.println("Producto de $" + precio + " agregado al carrito.");
@@ -91,10 +96,8 @@ public class Main {
     public static void main(String[] args) {
         double descuentoPorDefecto = calcularDescuento(1000);
         System.out.println("Descuento con 10% por defecto sobre $1000: $" + String.format("%.2f", descuentoPorDefecto));
-
         double descuentoQuince = calcularDescuento(1000, 15);
         System.out.println("Descuento con 15% sobre $1000: $" + String.format("%.2f", descuentoQuince));
-
         Scanner sc = new Scanner(System.in);
         List<Double> carrito = new ArrayList<>();
         int opcion;
@@ -128,3 +131,4 @@ public class Main {
         sc.close();
     }
 }
+
